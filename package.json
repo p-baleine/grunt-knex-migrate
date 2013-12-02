@@ -1,0 +1,40 @@
+{
+  "name": "grunt-knex-migrate",
+  "version": "0.0.1",
+  "description": "Grunt task for knex's migrate",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/p-baleine/knex-migrate.git"
+  },
+  "keywords": [
+    "grunt",
+    "migration",
+    "knex",
+    "sqlite3",
+    "pg",
+    "mysql"
+  ],
+  "author": "Junpei Tajima <p.baleine@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/p-baleine/knex-migrate/issues"
+  },
+  "dependencies": {
+    "knex": "git+https://github.com/tgriesser/knex.git",
+    "bluebird": "~0.11.4-1"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-mocha-cli": "latest",
+    "matchdep": "latest",
+    "sqlite3": "~2.1.19"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.0"
+  }
+}
