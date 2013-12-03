@@ -14,22 +14,71 @@ function promisify(fn) {
 describe('knexmigrate task', function() {
   describe('config specified by simple object', function() {
     before(function() {
+      this.definition = require('./simple');
       this.conn = knex.initialize({
         client: 'sqlite3',
         connection: {
-          filename: __dirname + '/../test/tmp/simple/db/simple.db'
+          filename: __dirname + '/../' + this.definition.database.connection.filename
         }
       });
     });
 
     it('should create migration file at specified path.', promisify(function() {
-      return glob(__dirname + '/../test/tmp/simple/db/migrate/*create_posts.js').then(function(files) {
+      return glob(__dirname + '/../' + this.definition.directory).then(function(files) {
         expect(files).to.not.be.empty;
       });
     }));
 
     it('should create migration table as specified name', promisify(function() {
-      return this.conn.schema.hasTable('knex_migrations').then(function(exists) {
+      return this.conn.schema.hasTable(this.definition.tableName).then(function(exists) {
+        return exists ? Promise.resolve() : Promise.reject(new Error('table not exist'));
+      });
+    }));
+  });
+
+  describe('config specified by a staticfile', function() {
+    before(function() {
+      this.definition = require('./staticfile');
+      this.conn = knex.initialize({
+        client: 'sqlite3',
+        connection: {
+          filename: __dirname + '/../' + this.definition.database.connection.filename
+        }
+      });
+    });
+
+    it('should create migration file at specified path.', promisify(function() {
+      return glob(__dirname + '/../' + this.definition.directory).then(function(files) {
+        expect(files).to.not.be.empty;
+      });
+    }));
+
+    it('should create migration table as specified name', promisify(function() {
+      return this.conn.schema.hasTable(this.definition.tableName).then(function(exists) {
+        return exists ? Promise.resolve() : Promise.reject(new Error('table not exist'));
+      });
+    }));
+  });
+
+  describe('config specified by a staticfile', function() {
+    before(function() {
+      this.definition = require('./function');
+      this.conn = knex.initialize({
+        client: 'sqlite3',
+        connection: {
+          filename: __dirname + '/../' + this.definition.database.connection.filename
+        }
+      });
+    });
+
+    it('should create migration file at specified path.', promisify(function() {
+      return glob(__dirname + '/../' + this.definition.directory).then(function(files) {
+        expect(files).to.not.be.empty;
+      });
+    }));
+
+    it('should create migration table as specified name', promisify(function() {
+      return this.conn.schema.hasTable(this.definition.tableName).then(function(exists) {
         return exists ? Promise.resolve() : Promise.reject(new Error('table not exist'));
       });
     }));

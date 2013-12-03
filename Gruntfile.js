@@ -18,29 +18,39 @@ module.exports = function(grunt) {
     mkdir: {
       test: {
         options: {
-          create: ['test/tmp/simple/db', 'test/tmp/staticfile/db']
+          create: [
+            'test/tmp/simple/db',
+            'test/tmp/staticfile/db',
+            'test/tmp/function/db'
+          ]
         }
       }
     }
   });
 
-  grunt.registerTask('testrun', 'Test run for knexmigrate', function() {
-    // simple object
-    grunt.config.set('knexmigrate', {
-      directory: './test/tmp/simple/db/migrate',
-      tableName: 'knex_migrations',
-      database: {
-        client: 'sqlite3',
-        connection: {
-          filename: './test/tmp/simple/db/simple.db'
-        }
-      }
-    });
-    grunt.task.run('knexmigrate:make:create_posts');
+  grunt.registerTask('swapTestConfig:simple', 'swap `knexmigrate` config', function() {
+    grunt.config.set('knexmigrate', require('./test/simple'));
+  });
 
-    // staticfile
-    // grunt.config.set('knexmigrate', './test/staticfile.json');
-    // grunt.task.run('knexmigrate:make:create_posts');
+  grunt.registerTask('swapTestConfig:staticfile', 'swap `knexmigrate` config', function() {
+    grunt.config.set('knexmigrate', './test/staticfile.json');
+  });
+
+  grunt.registerTask('swapTestConfig:function', 'swap `knexmigrate` config', function() {
+    grunt.config.set('knexmigrate', function(cb) { return cb(null, require('./test/function')); });
+  });
+
+  grunt.registerTask('testrun', 'Test run for knexmigrate', function() {
+    grunt.task.run([
+      'swapTestConfig:simple',
+      'knexmigrate:make:create_posts',
+
+      'swapTestConfig:staticfile',
+      'knexmigrate:make:create_posts',
+
+      'swapTestConfig:function',
+      'knexmigrate:make:create_posts'
+    ]);
   });
 
   grunt.loadTasks('tasks');

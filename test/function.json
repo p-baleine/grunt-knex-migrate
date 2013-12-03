@@ -1,0 +1,10 @@
+{
+  "directory": "./test/tmp/function/db/migrate",
+  "tableName": "knex_migrations_for_function",
+  "database": {
+    "client": "sqlite3",
+    "connection": {
+      "filename": "./test/tmp/function/db/function.db"
+    }
+  }
+}

@@ -4,7 +4,7 @@
   "database": {
     "client": "sqlite3",
     "connection": {
-      "filename": "./test/tmp/staticfile/db/simple.db"
+      "filename": "./test/tmp/staticfile/db/staticfile.db"
     }
   }
 }
