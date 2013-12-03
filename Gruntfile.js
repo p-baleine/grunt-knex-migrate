@@ -11,7 +11,7 @@ module.exports = function(grunt) {
     },
 
     clean: {
-      example: [],
+      example: ['example/**/db/migrate/*.js', 'example/**/db/*.db'],
       test: ['test/tmp']
     },
 

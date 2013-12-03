@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "knex": "git+https://github.com/tgriesser/knex.git",
-    "bluebird": "~0.11.4-1"
+    "bluebird": "~0.11.4-1",
+    "colors": "~0.6.2"
   },
   "devDependencies": {
     "grunt": "latest",
