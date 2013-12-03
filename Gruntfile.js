@@ -1,10 +1,20 @@
+'use strict';
+
 var matchdep = require('matchdep');
 
 module.exports = function(grunt) {
   matchdep.filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   grunt.initConfig({
-    jshint: {},
+    jshint: {
+      all: [
+        'Gruntfile.js',
+        'tasks/*.js'
+      ],
+      options: {
+        jshintrc: '.jshintrc'
+      }
+    },
 
     mochacli: {
       all: ['test/**/*.test.js', '!test/tmp/**/*.js']

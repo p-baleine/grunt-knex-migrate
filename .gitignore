@@ -2,3 +2,4 @@ node_modules
 example/**/db/migrate/*.js
 example/**/db/*.db
 test/tmp
+runtime.json

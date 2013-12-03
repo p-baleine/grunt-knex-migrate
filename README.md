@@ -1,6 +1,6 @@
-# grunt-knex-migrate
+# grunt-knex-migrate [![Build Status](https://travis-ci.org/p-baleine/grunt-knex-migrate.png?branch=master)](https://travis-ci.org/p-baleine/grunt-knex-migrate)
 
-> Grunt task for knex's migrate
+> Grunt task for [knex](http://knexjs.org/)'s migrate
 
 ## knexmigrate task
 

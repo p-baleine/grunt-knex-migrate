@@ -8,7 +8,9 @@ This example uses [node-config](https://github.com/lorenwest/node-config) and mi
 
 ```js
 knexmigrate: {
-  config: './config.json'
+  config: function(cb) {
+    cb(null, require('config'));
+  }
 }
 ```
 
