@@ -1,19 +1,10 @@
-# Example for grunt-knex-migrate configuration via simple object.
+# Example for grunt-knex-migrate configuration via filename.
 
 ## Configudation
 
 ```js
 knexmigrate: {
-  config: {
-    directory: './db/migrate',
-    tableName: 'knex_migrations',
-    database: {
-      client: 'sqlite3',
-      connection: {
-        filename: './db/simple.db'
-      }
-    }
-  }
+  config: './config.json'
 }
 ```
 

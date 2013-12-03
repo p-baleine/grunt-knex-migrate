@@ -1,19 +1,14 @@
-# Example for grunt-knex-migrate configuration via simple object.
+# Example for grunt-knex-migrate configuration via node-config.
+
+`config` field could be specified by function. This function receives node style callback and you can pass configuration object on the fly.
+
+This example uses [node-config](https://github.com/lorenwest/node-config) and migrations for different environment can be run by setting `NODE_ENV` variable.
 
 ## Configudation
 
 ```js
 knexmigrate: {
-  config: {
-    directory: './db/migrate',
-    tableName: 'knex_migrations',
-    database: {
-      client: 'sqlite3',
-      connection: {
-        filename: './db/simple.db'
-      }
-    }
-  }
+  config: './config.json'
 }
 ```
 
@@ -49,6 +44,15 @@ Run migrations:
 
 ```bash
 $ grunt knexmigrate:latest
+Running "knexmigrate:latest" (knexmigrate) task
+>> Batch 1 run: 1 migrations
+>> 20131204081849_create_post.js
+```
+
+Run migration on `production` environment:
+
+```
+$ NODE_ENV=production grunt knexmigrate:latest
 Running "knexmigrate:latest" (knexmigrate) task
 >> Batch 1 run: 1 migrations
 >> 20131204081849_create_post.js
