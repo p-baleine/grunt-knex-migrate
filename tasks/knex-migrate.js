@@ -1,6 +1,7 @@
 var Promise = require('bluebird'),
     path = require('path'),
     fs = Promise.promisifyAll(require('fs')),
+    colors = require('colors'),
     Knex = require('knex'),
 
     knex;
@@ -37,8 +38,9 @@ var commands = {
     return knex.migrate.latest(config)
       .spread(function(batchNo, log) {
         return log.length === 0 ?
-          ['Already up to date'] :
-          ['Batch ' + batchNo + ' run: ' + log.length +' migrations'];
+          ['Already up to date'.cyan] :
+          ['Batch %d run: %d migrations\n%s'.green, batchNo, log.length,
+           log.join('\n').cyan];
       });
     },
 
@@ -48,7 +50,7 @@ var commands = {
 
     return knex.migrate.make(name, config)
       .then(function(filename) {
-        return ['Migration %s created!', filename];
+        return ['Migration %s created!'.green, filename];
       });
   },
 
@@ -58,7 +60,8 @@ var commands = {
       .spread(function(batchNo, log) {
         return log.length === 0 ?
           ['Already at the base migration'] :
-          ['Batch ' + batchNo + ' rolled back: ' + log.length +' migrations'];
+          ['Batch %d rolled bacl: %d migrations\n%s', batchNo, log.length,
+           log.join('\n').cyan];
       });
   },
 
@@ -66,7 +69,7 @@ var commands = {
   currentVersion: function(config) {
     return knex.migrate.currentVersion(config)
       .then(function(version) {
-        return ['Current Version: %s', version];
+        return ['Current Version: '.green + version.blue];
       });
   }
 };
