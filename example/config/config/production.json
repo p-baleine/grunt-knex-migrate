@@ -1,0 +1,12 @@
+{
+  "database": {
+    "client": "pg",
+    "connection": {
+      "host": "127.0.0.1",
+      "user": "pbaleine",
+      "database": "myapp_test",
+      "charset": "utf8"
+    },
+    "debug": false
+  }
+}

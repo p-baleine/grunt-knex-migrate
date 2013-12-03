@@ -1,4 +1,4 @@
 node_modules
 example/**/db/migrate/*.js
-example/**/*.sqlite3
+example/**/db/*.db
 test/tmp
