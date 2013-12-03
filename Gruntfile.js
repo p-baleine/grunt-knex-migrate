@@ -29,15 +29,15 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('swapTestConfig:simple', 'swap `knexmigrate` config', function() {
-    grunt.config.set('knexmigrate', require('./test/simple'));
+    grunt.config.set('knexmigrate.config', require('./test/simple'));
   });
 
   grunt.registerTask('swapTestConfig:staticfile', 'swap `knexmigrate` config', function() {
-    grunt.config.set('knexmigrate', './test/staticfile.json');
+    grunt.config.set('knexmigrate.config', './test/staticfile.json');
   });
 
   grunt.registerTask('swapTestConfig:function', 'swap `knexmigrate` config', function() {
-    grunt.config.set('knexmigrate', function(cb) { return cb(null, require('./test/function')); });
+    grunt.config.set('knexmigrate.config', function(cb) { return cb(null, require('./test/function')); });
   });
 
   grunt.registerTask('testrun', 'Test run for knexmigrate', function() {

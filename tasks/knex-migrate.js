@@ -11,7 +11,7 @@ module.exports = function(grunt) {
   grunt.registerTask('knexmigrate', 'knex\'s migration task.', function(command, name) {
     var done = this.async();
 
-    loadConfig(grunt.config('knexmigrate'), grunt.option('config'))
+    loadConfig(grunt.config('knexmigrate.config'), grunt.option('config'))
       .then(function(config) {
         // initialize knex
         knex = Knex(config.database);

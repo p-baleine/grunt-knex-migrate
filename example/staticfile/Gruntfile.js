@@ -1,6 +1,8 @@
 module.exports = function(grunt) {
   grunt.initConfig({
-    knexmigrate: './config.json'
+    knexmigrate: {
+      config: './config.json'
+    }
   });
 
   grunt.loadTasks('../../tasks');

@@ -1,7 +1,9 @@
 module.exports = function(grunt) {
   grunt.initConfig({
-    knexmigrate: function(cb) {
-      cb(null, require('config'));
+    knexmigrate: {
+      config: function(cb) {
+        cb(null, require('config'));
+      }
     }
   });
 
