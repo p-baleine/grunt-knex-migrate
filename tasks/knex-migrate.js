@@ -25,7 +25,7 @@ module.exports = function(grunt) {
         grunt.log.oklns.apply(grunt.log, arguments);
       })
       .catch(grunt.log.error)
-      .finally(process.exit);
+      .finally(done);
   });
 };
 

@@ -1,0 +1,10 @@
+{
+  "directory": "./test/tmp/staticfile/db/migrate",
+  "tableName": "knex_migrations_for_static_file",
+  "database": {
+    "client": "sqlite3",
+    "connection": {
+      "filename": "./test/tmp/staticfile/db/simple.db"
+    }
+  }
+}
