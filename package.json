@@ -1,6 +1,6 @@
 {
   "name": "grunt-knex-migrate",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Grunt task for knex's migrate",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/p-baleine/knex-migrate.git"
+    "url": "https://github.com/p-baleine/grunt-knex-migrate.git"
   },
   "keywords": [
     "grunt",
@@ -21,7 +21,7 @@
   "author": "Junpei Tajima <p.baleine@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/p-baleine/knex-migrate/issues"
+    "url": "https://github.com/p-baleine/grunt-knex-migrate/issues"
   },
   "dependencies": {
     "knex": "git+https://github.com/tgriesser/knex.git",
