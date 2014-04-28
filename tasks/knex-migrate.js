@@ -60,7 +60,7 @@ var commands = {
       .spread(function(batchNo, log) {
         return log.length === 0 ?
           ['Already at the base migration'] :
-          ['Batch %d rolled bacl: %d migrations\n%s', batchNo, log.length,
+          ['Batch %d rolled back: %d migrations\n%s', batchNo, log.length,
            log.join('\n').cyan];
       });
   },
