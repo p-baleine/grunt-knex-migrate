@@ -15,12 +15,7 @@ describe('knexmigrate task', function() {
   describe('config specified by simple object', function() {
     before(function() {
       this.definition = require('./simple');
-      this.conn = knex.initialize({
-        client: 'sqlite3',
-        connection: {
-          filename: __dirname + '/../' + this.definition.database.connection.filename
-        }
-      });
+      this.conn = knex(this.definition.database);
     });
 
     it('should create migration file at specified path.', promisify(function() {
@@ -30,7 +25,13 @@ describe('knexmigrate task', function() {
     }));
 
     it('should create migration table as specified name', promisify(function() {
-      return this.conn.schema.hasTable(this.definition.tableName).then(function(exists) {
+      var tableName = this.definition.database.migrations.tableName,
+          knex = this.conn;
+
+      // We call the currentVersion of the migrations to ensure table creation
+      return knex.migrate.currentVersion().then(function(version) {
+        return knex.schema.hasTable(tableName);
+      }).then(function(exists) {
         return exists ? Promise.resolve() : Promise.reject(new Error('table not exist'));
       });
     }));
@@ -39,12 +40,7 @@ describe('knexmigrate task', function() {
   describe('config specified by a staticfile', function() {
     before(function() {
       this.definition = require('./staticfile');
-      this.conn = knex.initialize({
-        client: 'sqlite3',
-        connection: {
-          filename: __dirname + '/../' + this.definition.database.connection.filename
-        }
-      });
+      this.conn = knex(this.definition.database);
     });
 
     it('should create migration file at specified path.', promisify(function() {
@@ -54,7 +50,13 @@ describe('knexmigrate task', function() {
     }));
 
     it('should create migration table as specified name', promisify(function() {
-      return this.conn.schema.hasTable(this.definition.tableName).then(function(exists) {
+      var tableName = this.definition.database.migrations.tableName,
+          knex = this.conn;
+
+      // We call the currentVersion of the migrations to ensure table creation
+      return knex.migrate.currentVersion().then(function(version) {
+        return knex.schema.hasTable(tableName);
+      }).then(function(exists) {
         return exists ? Promise.resolve() : Promise.reject(new Error('table not exist'));
       });
     }));
@@ -63,12 +65,7 @@ describe('knexmigrate task', function() {
   describe('config specified by a staticfile', function() {
     before(function() {
       this.definition = require('./function');
-      this.conn = knex.initialize({
-        client: 'sqlite3',
-        connection: {
-          filename: __dirname + '/../' + this.definition.database.connection.filename
-        }
-      });
+      this.conn = knex(this.definition.database);
     });
 
     it('should create migration file at specified path.', promisify(function() {
@@ -78,7 +75,13 @@ describe('knexmigrate task', function() {
     }));
 
     it('should create migration table as specified name', promisify(function() {
-      return this.conn.schema.hasTable(this.definition.tableName).then(function(exists) {
+      var tableName = this.definition.database.migrations.tableName,
+          knex = this.conn;
+
+      // We call the currentVersion of the migrations to ensure table creation
+      return knex.migrate.currentVersion().then(function(version) {
+        return knex.schema.hasTable(tableName);
+      }).then(function(exists) {
         return exists ? Promise.resolve() : Promise.reject(new Error('table not exist'));
       });
     }));
