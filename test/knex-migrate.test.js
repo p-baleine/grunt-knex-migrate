@@ -1,3 +1,5 @@
+/*jshint expr: true, mocha: true*/
+
 var expect = require('chai').expect,
     knex = require('knex'),
     Promise = require('bluebird'),
