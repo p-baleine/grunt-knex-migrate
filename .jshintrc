@@ -8,5 +8,8 @@
   "boss": true,
   "eqnull": true,
   "node": true,
-  "latedef": false
+  "latedef": false,
+  "globals": {
+    "Promise": true
+  }
 }

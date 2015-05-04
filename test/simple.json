@@ -1,10 +1,12 @@
 {
   "directory": "./test/tmp/simple/db/migrate",
-  "tableName": "knex_migrations",
   "database": {
     "client": "sqlite3",
     "connection": {
       "filename": "./test/tmp/simple/db/simple.db"
+    },
+    "migrations": {
+      "tableName": "knex_migrations"
     }
   }
 }
