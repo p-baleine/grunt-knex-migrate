@@ -24,7 +24,6 @@
     "url": "https://github.com/p-baleine/grunt-knex-migrate/issues"
   },
   "dependencies": {
-    "knex": "git+https://github.com/tgriesser/knex.git",
     "bluebird": "~0.11.4-1",
     "colors": "~0.6.2"
   },
@@ -40,6 +39,7 @@
     "grunt-mkdir": "~0.1.1"
   },
   "peerDependencies": {
+    "knex": ">0.0.0",
     "grunt": "~0.4.0"
   }
 }
