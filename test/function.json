@@ -5,6 +5,7 @@
     "client": "sqlite3",
     "connection": {
       "filename": "./test/tmp/function/db/function.db"
-    }
+    },
+    "useNullAsDefault": true
   }
 }
