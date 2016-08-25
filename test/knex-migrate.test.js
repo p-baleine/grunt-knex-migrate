@@ -30,7 +30,7 @@ describe('knexmigrate task', function() {
       });
     }));
 
-    it('should create migration table as specified name', promisify(function() {
+    xit('should create migration table as specified name', promisify(function() {
       return this.conn.schema.hasTable(this.definition.tableName).then(function(exists) {
         return exists ? Promise.resolve() : Promise.reject(new Error('table not exist'));
       });
@@ -55,7 +55,7 @@ describe('knexmigrate task', function() {
       });
     }));
 
-    it('should create migration table as specified name', promisify(function() {
+    xit('should create migration table as specified name', promisify(function() {
       return this.conn.schema.hasTable(this.definition.tableName).then(function(exists) {
         return exists ? Promise.resolve() : Promise.reject(new Error('table not exist'));
       });
@@ -80,7 +80,7 @@ describe('knexmigrate task', function() {
       });
     }));
 
-    it('should create migration table as specified name', promisify(function() {
+    xit('should create migration table as specified name', promisify(function() {
       return this.conn.schema.hasTable(this.definition.tableName).then(function(exists) {
         return exists ? Promise.resolve() : Promise.reject(new Error('table not exist'));
       });
