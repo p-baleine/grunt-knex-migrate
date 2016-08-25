@@ -5,6 +5,7 @@
     "client": "sqlite3",
     "connection": {
       "filename": "./test/tmp/simple/db/simple.db"
-    }
+    },
+    "useNullAsDefault": true
   }
 }

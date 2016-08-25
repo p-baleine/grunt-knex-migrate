@@ -15,11 +15,12 @@ describe('knexmigrate task', function() {
   describe('config specified by simple object', function() {
     before(function() {
       this.definition = require('./simple');
-      this.conn = knex.initialize({
+      this.conn = knex({
         client: 'sqlite3',
         connection: {
           filename: __dirname + '/../' + this.definition.database.connection.filename
-        }
+        },
+        useNullAsDefault: true
       });
     });
 
@@ -39,11 +40,12 @@ describe('knexmigrate task', function() {
   describe('config specified by a staticfile', function() {
     before(function() {
       this.definition = require('./staticfile');
-      this.conn = knex.initialize({
+      this.conn = knex({
         client: 'sqlite3',
         connection: {
           filename: __dirname + '/../' + this.definition.database.connection.filename
-        }
+        },
+        useNullAsDefault: true
       });
     });
 
@@ -63,11 +65,12 @@ describe('knexmigrate task', function() {
   describe('config specified by a staticfile', function() {
     before(function() {
       this.definition = require('./function');
-      this.conn = knex.initialize({
+      this.conn = knex({
         client: 'sqlite3',
         connection: {
           filename: __dirname + '/../' + this.definition.database.connection.filename
-        }
+        },
+        useNullAsDefault: true
       });
     });
 
